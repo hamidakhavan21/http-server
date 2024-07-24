@@ -1,0 +1,22 @@
+POST http://localhost:3000/plan
+Content-Type: application/json
+
+{
+    "title": "gorbe",
+    "description" : "sorme"
+}
+
+###
+GET http://localhost:3000/plan/2
+
+# POST http://localhost:3000/Dashboard
+# Content-Type: application/json
+# {
+#     "name": "roham",
+#     "age": 18
+# }
+
+# ###
+# GET http://localhost:3000/service/amir
+# ###
+# GET http://localhost:3000/home?name=rex
