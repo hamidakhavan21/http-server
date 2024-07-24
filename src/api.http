@@ -2,12 +2,21 @@ POST http://localhost:3000/plan
 Content-Type: application/json
 
 {
-    "title": "gorbe",
+    "title": "",
     "description" : "sorme"
 }
 
 ###
 GET http://localhost:3000/plan/2
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password" : "admin"
+}
 
 # POST http://localhost:3000/Dashboard
 # Content-Type: application/json
