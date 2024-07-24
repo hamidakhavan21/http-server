@@ -8,21 +8,19 @@ describe("Plan", () => {
         });
 
         it("should create a plan if we are logged in", async () => {
-            const { body: user } = await request(app)
+            const {body: user} = await request(app)
                 .post("/login")
-                .send({ username: "admin", password: "admin" })
+                .send({username: "admin",password:"admin"})
                 .expect(200);
-
-            const { body: plan } = await request(app)
+            const {body: plan} = await request(app)
                 .post("/plan")
-                .set("Authorization", `Bearer ${user.id}`)
+                .set("Authorization",user.id)
                 .send({
                     title: "orumie",
                     description: "nice place"
-                })
-                .expect(200);
-
-            expect(plan.title).toBe("orumie");
-        });
-    });
-});
+            })
+            .expect(200);
+        expect(plan.title).toBe("orumie")    
+        })
+    })
+})
