@@ -1,8 +1,9 @@
 POST http://localhost:3000/plan
 Content-Type: application/json
+Authorization: 94e3713e-9e78-4afe-ab46-62aaebaaacab
 
 {
-    "title": "",
+    "title": "hell",
     "description" : "sorme"
 }
 
