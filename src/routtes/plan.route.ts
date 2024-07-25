@@ -1,5 +1,5 @@
-import { Router } from "express";
 import { Express } from "express";
+import { Router } from "express";
 import { users } from "./user.route";
 
 interface plan {
@@ -7,13 +7,12 @@ interface plan {
     title: string,
     description: string,
 }
-console.log(users)
 
 const plans : plan [] = []
 
 export const app = Router();
 
-app.post("/plan",(req,res)=>{
+app.post("/",(req,res)=>{
     const userID = req.headers["authorization"]
 
     const loggedInUser = users.find((x)=> x.id === userID)
@@ -44,8 +43,9 @@ app.post("/plan",(req,res)=>{
     plans.push(plan)
     res.status(200).send(plan)
 })
-    
-app.get("/plan/:id",(req,res)=>{
+
+
+app.get("/:id",(req,res)=>{
     const id = parseInt(req.params.id);
     
     if(isNaN(id)){
