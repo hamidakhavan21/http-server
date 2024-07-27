@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { v4 as uuidv4 } from 'uuid';
+import { isNonEmptyString } from "../../utilities/non-empty-string";
 
 
 
@@ -29,17 +30,11 @@ export const users : user[] = [
 app.post("/login",(req,res)=>{
     const {username,password} =req.body;
     
-    if(
-        username == undefined || 
-        typeof(username) != "string" && username.length == 0        
-    ){
+    if(!isNonEmptyString(username)){
     res.status(400).send({message: "wrong Usename format"})
     return;
     }
-    if(
-        password == undefined || 
-        typeof(password) != "string" && password.length == 0        
-    ){
+    if(!isNonEmptyString(password)){
     res.status(400).send({message: "wrong format password"})
     return
     }

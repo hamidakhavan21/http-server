@@ -1,11 +1,12 @@
-import { Express } from "express";
 import { Router } from "express";
 import { users } from "./user.route";
+import { isNonEmptyString } from "../../utilities/non-empty-string";
 
 interface plan {
     id: number,
     title: string,
     description: string,
+    deadLine: Date,
 }
 
 const plans : plan [] = []
@@ -21,24 +22,30 @@ app.post("/",(req,res)=>{
         res.status(401).send({message: "Unauthorized"});
         return
     }
-
-    const { title, description } = req.body
+const { title, description, deadLine } = req.body
     
     //validate
-    if (
-        title == undefined ||
-        typeof title != "string" ||
-        typeof title == "string" && title.length == 0
-    ){
+    if (!isNonEmptyString(title)){
         res.status(400).send({message: "bad request"})
         return;
     }
-
+    if (deadLine == undefined){
+        res.status(400)
+        .send({message: "deadline sould be provided"})
+        return;
+    }
+    const deadLineTime = new Date(deadLine);
+    if(isNaN(deadLineTime.getTime())){
+        res.status(400)
+        .send({message : "deadline should be date"})
+        return;
+    }
     //create plan
     const plan = {
         id : plans.length + 1,
         title,
         description : description || "",
+        deadLine : deadLineTime,
     };
     plans.push(plan)
     res.status(200).send(plan)

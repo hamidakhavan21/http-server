@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:e2e": "jest '**/e2e/**/*.spec.ts'",
+    "test:e2e": "jest --collectCoverageFrom='.\/e2e\/*.spec.ts'",
     "start": "ts-node src/main.ts"
   },
   "keywords": [],

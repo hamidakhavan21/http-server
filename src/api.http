@@ -10,13 +10,14 @@ Content-Type: application/json
 ###
 POST http://localhost:3000/plan
 Content-Type: application/json
-Authorization: 1ca3bb8d-47f4-4c7f-8310-533df4c42cd9
+Authorization: 6f158c23-9cbe-4ff8-b52f-f1a8c12ac486
 
 {
     "title": "hell",
-    "description" : "sorme"
+    "description" : "sorme",
+    "deadLine" : "2025-03-02"
 }
 
 ###
-GET http://localhost:3000/plan/2
+GET http://localhost:3000/plan/1
 
